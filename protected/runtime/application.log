@@ -1,0 +1,205 @@
+2012/03/04 06:20:58 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sauna.authitem' doesn't exist. Выполнявшийся SQL-запрос: SELECT COUNT(*) FROM AuthItem.
+in C:\xampp\htdocs\sauna\protected\modules\rights\components\RInstaller.php (180)
+in C:\xampp\htdocs\sauna\protected\modules\rights\controllers\InstallController.php (43)
+in C:\xampp\htdocs\sauna\index.php (13)
+2012/03/04 06:21:27 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sauna.tbl_users' doesn't exist. Выполнявшийся SQL-запрос: SHOW COLUMNS FROM `tbl_users`.
+in C:\xampp\htdocs\sauna\protected\modules\user\models\User.php (28)
+in C:\xampp\htdocs\sauna\protected\modules\user\components\UserIdentity.php (27)
+in C:\xampp\htdocs\sauna\protected\modules\user\models\UserLogin.php (52)
+2012/03/04 06:21:27 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "tbl_users", упомянутая в записи active record класса "User", не найдена в базе данных.' in C:\xampp\yiiRoot\framework\db\ar\CActiveRecord.php:2264
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(User))
+#1 C:\xampp\htdocs\sauna\protected\modules\user\models\User.php(28): CActiveRecord::model('User')
+#2 C:\xampp\htdocs\sauna\protected\modules\user\components\UserIdentity.php(27): User::model()
+#3 C:\xampp\htdocs\sauna\protected\modules\user\models\UserLogin.php(52): UserIdentity->authenticate()
+#4 C:\xampp\yiiRoot\framework\validators\CInlineValidator.php(43): UserLogin->authenticate('password', Array)
+#5 C:\xampp\yiiRoot\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(UserLogin), 'password')
+#6 C:\xampp\yiiRoot\framework\base\CModel.php(158): CValidator->validate(Object(UserLogin), NULL)
+#7 C:\xampp\htdocs\sauna\protected\modules\user\controllers\LoginController.php(22): CModel->validate()
+#8 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#9 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\xampp\yiiRoot\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\yiiRoot\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('user/login')
+#14 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/sauna/user/login
+HTTP_REFERER=http://localhost/sauna/user/login
+---
+2012/03/04 06:24:13 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sauna.authassignment' doesn't exist. Выполнявшийся SQL-запрос: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid. Bound with :userid='1'.
+in C:\xampp\htdocs\sauna\protected\modules\rights\components\RAuthorizer.php (341)
+in C:\xampp\htdocs\sauna\protected\modules\rights\components\RWebUser.php (21)
+in C:\xampp\htdocs\sauna\protected\modules\user\models\UserLogin.php (57)
+2012/03/04 06:24:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sauna.authassignment' doesn't exist. The SQL statement executed was: SELECT *
+FROM `AuthAssignment`
+WHERE userid=:userid. Bound with :userid='1'' in C:\xampp\yiiRoot\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\yiiRoot\framework\web\auth\CDbAuthManager.php(334): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\sauna\protected\modules\rights\components\RAuthorizer.php(341): CDbAuthManager->getAuthAssignments('1')
+#3 C:\xampp\htdocs\sauna\protected\modules\rights\components\RWebUser.php(21): RAuthorizer->isSuperuser('1')
+#4 C:\xampp\yiiRoot\framework\web\auth\CWebUser.php(239): RWebUser->afterLogin(false)
+#5 C:\xampp\htdocs\sauna\protected\modules\user\models\UserLogin.php(57): CWebUser->login(Object(UserIdentity), 2592000)
+#6 C:\xampp\yiiRoot\framework\validators\CInlineValidator.php(43): UserLogin->authenticate('password', Array)
+#7 C:\xampp\yiiRoot\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(UserLogin), 'password')
+#8 C:\xampp\yiiRoot\framework\base\CModel.php(158): CValidator->validate(Object(UserLogin), NULL)
+#9 C:\xampp\htdocs\sauna\protected\modules\user\controllers\LoginController.php(22): CModel->validate()
+#10 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): LoginController->actionLogin()
+#11 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\xampp\yiiRoot\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\yiiRoot\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): CController->run('')
+#15 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('user/login')
+#16 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/sauna/user/login
+HTTP_REFERER=http://localhost/sauna/user/login
+---
+2012/03/04 06:24:25 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sauna.authitem' doesn't exist. Выполнявшийся SQL-запрос: SELECT COUNT(*) FROM AuthItem.
+in C:\xampp\htdocs\sauna\protected\modules\rights\components\RInstaller.php (180)
+in C:\xampp\htdocs\sauna\protected\modules\rights\controllers\InstallController.php (43)
+in C:\xampp\htdocs\sauna\index.php (13)
+2012/03/04 08:39:04 [error] [exception.CDbException] exception 'CDbException' with message 'Параметр CDbConnection.connectionString должен быть заполнен.' in C:\xampp\yiiRoot\framework\db\CDbConnection.php:370
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\xampp\yiiRoot\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\xampp\yiiRoot\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\xampp\yiiRoot\framework\base\CModule.php(104): CModule->getComponent('db')
+#4 C:\xampp\yiiRoot\framework\gii\generators\model\ModelCode.php(54): CModule->__get('db')
+#5 C:\xampp\yiiRoot\framework\web\CFormModel.php(40): ModelCode->init()
+#6 C:\xampp\yiiRoot\framework\gii\CCodeGenerator.php(152): CFormModel->__construct()
+#7 C:\xampp\yiiRoot\framework\gii\CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\xampp\yiiRoot\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\yiiRoot\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('gii/model')
+#14 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/sauna/gii/model
+HTTP_REFERER=http://localhost/sauna/gii/model
+---
+2012/03/04 08:45:06 [error] [php] include(Blog.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (C:\xampp\yiiRoot\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\xampp\htdocs\sauna\protected\views\layouts\main.php(74): spl_autoload_call()
+#1 C:\xampp\yiiRoot\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\sauna\protected\extensions\yii-debug-toolbar\components\YiiDebugViewRenderer.php(43): SaunaController->renderInternal()
+#3 C:\xampp\yiiRoot\framework\web\CBaseController.php(94): YiiDebugViewRenderer->renderFile()
+#4 C:\xampp\yiiRoot\framework\web\widgets\CContentDecorator.php(77): SaunaController->renderFile()
+#5 C:\xampp\yiiRoot\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate()
+#6 C:\xampp\yiiRoot\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput()
+#7 C:\xampp\yiiRoot\framework\web\CBaseController.php(207): CContentDecorator->run()
+#8 C:\xampp\yiiRoot\framework\web\CBaseController.php(301): SaunaController->endWidget()
+#9 C:\xampp\htdocs\sauna\protected\views\layouts\column2.php(97): SaunaController->endContent()
+#10 C:\xampp\yiiRoot\framework\web\CBaseController.php(127): require()
+#11 C:\xampp\htdocs\sauna\protected\extensions\yii-debug-toolbar\components\YiiDebugViewRenderer.php(43): SaunaController->renderInternal()
+#12 C:\xampp\yiiRoot\framework\web\CBaseController.php(94): YiiDebugViewRenderer->renderFile()
+#13 C:\xampp\yiiRoot\framework\web\CController.php(785): SaunaController->renderFile()
+#14 C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php(133): SaunaController->render()
+#15 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): SaunaController->actionIndex()
+#16 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams()
+#17 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(134): SaunaController->runAction()
+#18 C:\xampp\yiiRoot\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#19 C:\xampp\yiiRoot\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#20 C:\xampp\yiiRoot\framework\web\filters\CInlineFilter.php(59): SaunaController->filterAccessControl()
+#21 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#22 C:\xampp\yiiRoot\framework\web\CController.php(292): CFilterChain->run()
+#23 C:\xampp\yiiRoot\framework\web\CController.php(266): SaunaController->runActionWithFilters()
+#24 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): SaunaController->run()
+#25 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#26 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#27 C:\xampp\htdocs\sauna\index.php(13): CWebApplication->run()
+REQUEST_URI=/sauna/sauna
+in C:\xampp\htdocs\sauna\protected\views\layouts\main.php (74)
+in C:\xampp\htdocs\sauna\protected\extensions\yii-debug-toolbar\components\YiiDebugViewRenderer.php (43)
+in C:\xampp\htdocs\sauna\protected\views\layouts\column2.php (97)
+2012/03/04 08:46:14 [error] [php] Use of undefined constant php - assumed 'php' (C:\xampp\htdocs\sauna\protected\views\layouts\main.php:84)
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\web\CBaseController.php(94): YiiDebugViewRenderer->renderFile()
+#1 C:\xampp\yiiRoot\framework\web\widgets\CContentDecorator.php(77): SaunaController->renderFile()
+#2 C:\xampp\yiiRoot\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate()
+#3 C:\xampp\yiiRoot\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput()
+#4 C:\xampp\yiiRoot\framework\web\CBaseController.php(207): CContentDecorator->run()
+#5 C:\xampp\yiiRoot\framework\web\CBaseController.php(301): SaunaController->endWidget()
+#6 C:\xampp\htdocs\sauna\protected\views\layouts\column2.php(97): SaunaController->endContent()
+#7 C:\xampp\yiiRoot\framework\web\CBaseController.php(127): require()
+#8 C:\xampp\htdocs\sauna\protected\extensions\yii-debug-toolbar\components\YiiDebugViewRenderer.php(43): SaunaController->renderInternal()
+#9 C:\xampp\yiiRoot\framework\web\CBaseController.php(94): YiiDebugViewRenderer->renderFile()
+#10 C:\xampp\yiiRoot\framework\web\CController.php(785): SaunaController->renderFile()
+#11 C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php(133): SaunaController->render()
+#12 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): SaunaController->actionIndex()
+#13 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams()
+#14 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(134): SaunaController->runAction()
+#15 C:\xampp\yiiRoot\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#16 C:\xampp\yiiRoot\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#17 C:\xampp\yiiRoot\framework\web\filters\CInlineFilter.php(59): SaunaController->filterAccessControl()
+#18 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#19 C:\xampp\yiiRoot\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\xampp\yiiRoot\framework\web\CController.php(266): SaunaController->runActionWithFilters()
+#21 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): SaunaController->run()
+#22 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#23 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\sauna\index.php(13): CWebApplication->run()
+REQUEST_URI=/sauna/sauna
+in C:\xampp\htdocs\sauna\protected\views\layouts\main.php (84)
+in C:\xampp\htdocs\sauna\protected\extensions\yii-debug-toolbar\components\YiiDebugViewRenderer.php (43)
+in C:\xampp\htdocs\sauna\protected\views\layouts\column2.php (97)
+2012/03/04 08:48:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "order/index".' in C:\xampp\yiiRoot\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('order/index')
+#1 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/sauna/order/index
+HTTP_REFERER=http://localhost/sauna/user/login
+---
+2012/03/04 09:04:18 [error] [exception.CException] exception 'CException' with message 'В классе CWebApplication и его поведениях не найден метод или замыкание с именем "user".' in C:\xampp\yiiRoot\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php(72): CComponent->__call('user', Array)
+#1 C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php(72): CWebApplication->user()
+#2 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(50): SaunaController->actionCreate()
+#3 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yiiRoot\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#6 C:\xampp\yiiRoot\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\yiiRoot\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\yiiRoot\framework\web\CController.php(292): CFilterChain->run()
+#10 C:\xampp\yiiRoot\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): CController->run('create')
+#12 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('sauna/create')
+#13 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/sauna/sauna/create
+HTTP_REFERER=http://localhost/sauna/sauna/create
+---
+2012/03/04 09:07:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php:161
+Stack trace:
+#0 C:\xampp\htdocs\sauna\protected\controllers\SaunaController.php(54): SaunaController->loadModel('0')
+#1 [internal function]: SaunaController->actionView('0')
+#2 C:\xampp\yiiRoot\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(SaunaController), Array)
+#3 C:\xampp\yiiRoot\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(SaunaController), Object(ReflectionMethod), Array)
+#4 C:\xampp\yiiRoot\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yiiRoot\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\xampp\yiiRoot\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\yiiRoot\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\yiiRoot\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\yiiRoot\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\xampp\yiiRoot\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yiiRoot\framework\web\CWebApplication.php(276): CController->run('view')
+#13 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('sauna/view')
+#14 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/sauna/sauna/0
+HTTP_REFERER=http://localhost/sauna/sauna/
+---
