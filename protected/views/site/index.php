@@ -18,7 +18,7 @@ should you have any questions.</p>
 
 <script src="http://api-maps.yandex.ru/1.1/index.xml?key=AKVj8U4BAAAA8ml7NwIABg_vOmDwgRCkGWgP-2RN_4rYxPMAAAAAAAAAAAApXht3Pc9C4Ed0G1AAXPvYrkd4Og==" type="text/javascript"></script>
 
-<div id="YMapsID" style="width:100%;height:400px"></div>
+<div id="YMapsID" style="width:100%;height:500px"></div>
 
 <script type="text/javascript">
     // Создает обработчик события window.onLoad

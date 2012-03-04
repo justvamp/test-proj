@@ -203,3 +203,12 @@ Stack trace:
 REQUEST_URI=/sauna/sauna/0
 HTTP_REFERER=http://localhost/sauna/sauna/
 ---
+2012/03/04 16:20:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "assets/9fe2c993/close_hover.png".' in C:\xampp\yiiRoot\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\yiiRoot\framework\web\CWebApplication.php(135): CWebApplication->runController('assets/9fe2c993...')
+#1 C:\xampp\yiiRoot\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\sauna\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/sauna/assets/9fe2c993/close_hover.png
+HTTP_REFERER=http://localhost/sauna/
+---
