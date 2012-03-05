@@ -14,7 +14,7 @@
 	
 	<title><?php echo CHtml::encode($this->pageTitle); echo ' :: '; echo Yii::app()->params['siteTitle']; ?></title>
 	
-	<!--link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" /-->
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	
 </head>
 
@@ -27,7 +27,7 @@
 		}
 		// панель навигации сайта
 		$this->widget('bootstrap.widgets.BootNavbar', array(
-			'fixed'=>true,
+			//'fixed'=>true,
 			'brand'=>'&nbsp;'.Yii::app()->name,
 			//'brandUrl'=>'/site/index',
 			'collapse'=>false, // requires bootstrap-responsive.css
@@ -57,7 +57,7 @@
 	?>
 	
 	
-	<div class="container" style="padding-top: 58px;">
+	<div class="container">
 		<?php echo $content; ?>
 		<div class="footer-holder"></div>
 	</div><!-- page -->

@@ -25,25 +25,39 @@ should you have any questions.</p>
     YMaps.jQuery(function () {
         // Создает экземпляр карты и привязывает его к созданному контейнеру
         var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
-            
+		map.addControl(new YMaps.Zoom());
+		map.addControl(new YMaps.ToolBar());
+
         // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
         map.setCenter(new YMaps.GeoPoint(39.9, 59.21), 13);
+
+		// Создает стиль
+		var s = new YMaps.Style();
+		// Создает стиль значка метки
+		s.iconStyle = new YMaps.IconStyle();
+		s.iconStyle.href = "./images/tag40.png";
+		s.iconStyle.size = new YMaps.Point(40, 40);
+		s.iconStyle.offset = new YMaps.Point(-18, -37);
 		
-		var geocoder = new YMaps.Geocoder("Вологда, ул. Беляева, 2а");
-		map.addOverlay(geocoder);
+		//  геокодер
+		var geocoder = new YMaps.Geocoder("Вологда, ул. Белева, 2а");
 		
 		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
 			if (this.length()) {
+				var placemark = new YMaps.Placemark(this.get(0).getGeoPoint(), {style: s});
+				placemark.name = "Имя объекта";
+				placemark.description = "Описание объекта";
+				map.addOverlay(placemark);
 				//alert("Найдено :" + this.length());
-				map.addOverlay(this.get(0));
+				//map.addOverlay(this.get(0));
 				//map.panTo(this.get(0).getGeoPoint())
-			}else {
-				alert("Ничего не найдено")
+			} else {
+				//alert("Ничего не найдено")
 			}
 		});
  
 		YMaps.Events.observe(geocoder, geocoder.Events.Fault, function (error) {
-			alert("Произошла ошибка: " + error.message);
+			//alert("Произошла ошибка: " + error.message);
 		});
 		
     })

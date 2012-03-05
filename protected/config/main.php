@@ -145,11 +145,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				
+				/*
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				
+				*/
 				array(
 					'class'=>'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
 					//'ipFilters'=>array('127.0.0.1','192.168.1.215'), // localhost only by default
