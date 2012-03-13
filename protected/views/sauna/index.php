@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Saunas',
+	'Сауны',
 );
 
 $this->menu=array(
-	array('label'=>'Create Sauna','url'=>array('create')),
-	array('label'=>'Manage Sauna','url'=>array('admin')),
+	array('label'=>'Создать сауну','url'=>array('create')),
+	array('label'=>'Управление саунами','url'=>array('admin')),
 );
 ?>
 
-<h1>Saunas</h1>
+<h1>Сауны</h1>
 
 <?php $this->widget('ext.bootstrap.widgets.BootListView',array(
 	'dataProvider'=>$dataProvider,

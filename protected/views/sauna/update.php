@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Управление саунами <?php echo $model->sauna_id; ?></h1>
+<h1>Изменение сауны <?php echo $model->sauna_id; ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>

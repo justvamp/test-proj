@@ -69,7 +69,7 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 			// for yii-user, too
-			'loginUrl'=>array('user/login'),
+			'loginUrl'=>array('site/login'),
 			//'loginUrl'=>array('site/index'),
 			// for rights
 			'class'=>'RWebUser',

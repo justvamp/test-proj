@@ -2,6 +2,13 @@
 
 class SiteController extends Controller
 {
+	
+	public $layout='//layouts/column1';	
+	
+	public function allowedActions() {
+		return 'index, contact, error, login, logout';
+	}		
+	
 	/**
 	 * Declares class-based actions.
 	 */

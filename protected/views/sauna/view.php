@@ -13,18 +13,15 @@ $this->menu=array(
 );
 ?>
 
-<h1>Просмотр сауны #<?php echo $model->sauna_id; ?></h1>
+<h1><?php echo $model->name; ?></h1>
 
-<?php $this->widget('ext.bootstrap.widgets.BootDetailView',array(
-	'data'=>$model,
-	'attributes'=>array(
-		'name',
-		'phones',
-		'address',
-		'latitude',
-		'longitude',
-		'capacity',
-		'price',
-		'description',
-	),
-)); ?>
+<h5><?php echo CHtml::encode($model->getAttributeLabel('phones')); ?></h5>
+<span class="sauna-about phones"><?php echo CHtml::encode($model->phones); ?></span>
+<h5><?php echo CHtml::encode($model->getAttributeLabel('address')); ?></h5>
+<span class="sauna-about"><?php echo CHtml::encode($model->address); ?></span>
+<h5><?php echo CHtml::encode($model->getAttributeLabel('capacity')); ?></h5>
+<span class="sauna-about"><?php echo CHtml::encode($model->capacity).' человек'; ?></span>
+<h5><?php echo CHtml::encode($model->getAttributeLabel('price')); ?></h5>
+<span class="sauna-about"><?php echo CHtml::encode($model->price).' рублей'; ?></span>
+<h5><?php echo CHtml::encode($model->getAttributeLabel('description')); ?></h5>
+<span class="description"><?php echo CHtml::encode($model->description); ?></span>

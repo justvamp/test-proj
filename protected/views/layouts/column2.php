@@ -3,7 +3,7 @@
 		<div class="span2">
 			<div id="sidebar">		
 				<?php		
-					//if (!Yii::app()->user->isGuest) {
+					if (!Yii::app()->user->isGuest) {
 				
 						$this->widget('bootstrap.widgets.BootMenu', array(
 							'type'=>'pills', // '', 'tabs', 'pills' (or 'list')
@@ -19,27 +19,16 @@
 							),
 						));
 
-						//if (UserModule::isAdmin()) {
+						if (UserModule::isAdmin()) {
 								
 							$this->widget('bootstrap.widgets.BootMenu', array(
 								'type'=>'pills', // '', 'tabs', 'pills' (or 'list')
 								'stacked'=>true, // whether this is a stacked menu
 								'items'=>$this->menu,
 							));
-							
-							$this->widget('bootstrap.widgets.BootMenu', array(
-								'type'=>'pills', // '', 'tabs', 'pills' (or 'list')
-								'stacked'=>true, // whether this is a stacked menu
-								'items'=>array(
-									array('label'=>'Расценки', 'url'=>array('/size/admin')),
-									array('label'=>'Скидки', 'url'=>array('/discount/admin')),
-									array('label'=>'Типы бумаги', 'url'=>array('/papertype/admin')),
-									array('label'=>'Права', 'url'=>array('/rights')),
-								),
-							));
-							
-						//}
-					//}
+						
+						}
+					}
 				?>
 				<!-- VK Widget>
 				<div id="vk_groups"></div>
