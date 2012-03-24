@@ -23,13 +23,13 @@ should you have any questions.</p>
 <script type="text/javascript">
     // Создает обработчик события window.onLoad
     YMaps.jQuery(function () {
-        // Создание экземпляра карты и привязка его к созданному контейнеру
-        var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+		// Создание экземпляра карты и привязка его к созданному контейнеру
+		var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
 		map.addControl(new YMaps.Zoom());
 		map.addControl(new YMaps.ToolBar());
 
-        // Установка начальных параметров отображения карты: центр карты и коэффициент масштабирования
-        map.setCenter(new YMaps.GeoPoint(39.9, 59.21), 13);
+		// Установка начальных параметров отображения карты: центр карты и коэффициент масштабирования
+		map.setCenter(new YMaps.GeoPoint(39.9, 59.21), 13);
 
 		// Создание стиля
 		var s = new YMaps.Style();
@@ -40,50 +40,52 @@ should you have any questions.</p>
 		s.iconStyle.offset = new YMaps.Point(-18, -37);
 		// стиль балуна
 		s.balloonContentStyle = new YMaps.BalloonContentStyle(
-			new YMaps.Template('<div style="background-color: white; color: #666; ">$[name]: $[description] ($[address])</div>')
+			new YMaps.Template('<div style="background-color: white; color: #666; ">$[name]: <b>$[address]</b></div>')
 		);		
 
-		// Геокодер
-		var geocoder = new YMaps.Geocoder("Вологда, ул. Белева, 2а");
-		
-		YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
-			if (this.length()) {
-				var placemark = new YMaps.Placemark(this.get(0).getGeoPoint(), {
-					/*hintOptions: {
-						maxWidth: 100,
-						showTimeout: 200,
-						offset: new YMaps.Point(5, 5)
-					},*/
-					balloonOptions: {
-						//maxWidth: 70,
-						hasCloseButton: true
-						//mapAutoPan: 0
-					},
-					style: s,
-					hideIcon: false
-				});
-				placemark.name = "Имя объекта";
-				placemark.description = "Описание объекта";
-				placemark.address = "Адрес объекта";
-				map.addOverlay(placemark);
-				// обработчики событий
-				YMaps.Events.observe(placemark, placemark.Events.MouseEnter, function () {
-					placemark.openBalloon();
-				});
-				YMaps.Events.observe(placemark, placemark.Events.MouseLeave, function () {
-					//placemark.closeBalloon();
-				});
-				YMaps.Events.observe(placemark, placemark.Events.Click, function () {
-					location.href = 'sauna/1';
-				});
+		function showObject(obj) {
+			var geoPoint = new YMaps.GeoPoint(obj.lng,obj.lat);
+			var placemark = new YMaps.Placemark(geoPoint, {
+				balloonOptions: {
+					maxWidth: 170,
+					hasCloseButton: true,
+					mapAutoPan: true
+				},
+				style: s,
+				hideIcon: false
+			});
+			placemark.name = obj.name;
+			//placemark.description = obj.desc;
+			placemark.address = obj.address;			
+			map.addOverlay(placemark);
+			//map.panTo(geoPoint);
+			//placemark.openBalloon();
+			YMaps.Events.observe(placemark, placemark.Events.MouseEnter, function () {
+				placemark.openBalloon();
+			});
+			YMaps.Events.observe(placemark, placemark.Events.MouseLeave, function () {
+				//placemark.closeBalloon();
+			});
+			YMaps.Events.observe(placemark, placemark.Events.Click, function () {
+				location.href = 'sauna/'+obj.id;
+			});
+		}
 
-				//alert("Найдено :" + this.length());
-				//map.addOverlay(this.get(0));
-				//map.panTo(this.get(0).getGeoPoint())
-			} else {
-				//alert("Ничего не найдено")
+		var objects = [];
+		<?php
+			$saunas = Sauna::model()->findAll();
+			$count = 0;
+			foreach ($saunas as $sauna) {
+				$count++;
+				echo "objects[$count] = {lat: $sauna->latitude, lng: $sauna->longitude, id: $sauna->sauna_id, name: '$sauna->name', address: '$sauna->address'}";
+				echo chr(10).chr(13);
 			}
-		});
-		
-    })
+		?>
+
+		for (var i=0; i < objects.length; i++) {
+			showObject(objects[i+1]);
+		}
+
+
+    });
 </script>

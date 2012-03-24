@@ -14,9 +14,13 @@
  * @property string $capacity
  * @property string $price
  * @property string $description
+ * @property string $main_image_name
  */
 class Sauna extends CActiveRecord
 {
+	// вспомогательный
+	public $image;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -35,6 +39,19 @@ class Sauna extends CActiveRecord
 		return 'sauna';
 	}
 
+	
+	public function getPhoneArray() {
+		$phones = explode(';', $this->phones);
+		foreach ($phones as $id => $phone) {
+			$phones[$id] = trim($phone);
+		}
+		return $phones;
+	}
+	
+	public function getImagePath() {
+		return Yii::app()->params['imgPath'].$this->main_image_name;
+	}
+	
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -47,6 +64,8 @@ class Sauna extends CActiveRecord
 			//array('user_id', 'numerical', 'integerOnly'=>true),
 			array('latitude, longitude', 'numerical'),
 			array('name', 'length', 'max'=>50),
+			array('image', 'file', 'types'=>'jpg', 'allowEmpty'=>true),
+			array('main_image_name', 'length', 'max'=>50),
 			array('phones, address', 'length', 'max'=>100),
 			array('capacity, price', 'length', 'max'=>20),
 			// The following rule is used by search().
@@ -82,6 +101,8 @@ class Sauna extends CActiveRecord
 			'capacity' => 'Вместимость',
 			'price' => 'Цена за час',
 			'description' => 'Описание',
+			'main_image_name' => 'Фотография',
+			'image' => 'Выберите фотографию',
 		);
 	}
 

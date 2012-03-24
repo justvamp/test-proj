@@ -25,7 +25,7 @@ $('.search-form form').submit(function(){
 
 <h1>Управление саунами</h1>
 
-<?php $this->widget('ext.bootstrap.widgets.BootGridView',array(
+<?php $this->widget('zii.widgets.grid.CGridView',array(
 	'id'=>'sauna-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -47,3 +47,5 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?>
+
+<?php echo CHtml::link('Добавить сауну', array('/sauna/create'), array('class'=>'btn btn-primary btn-large')); ?>

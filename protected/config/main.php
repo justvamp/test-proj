@@ -167,7 +167,7 @@ return array(
 		// this is used in contact page
 		'siteTitle'=>'Сауны в Вологде',
 		'adminEmail'=>'webmaster@example.com',
-		//'imgPath'=> 'orders',
+		'imgPath'=>'/photos/',
 		//'companyName'=>'ООО "Фотоходы"',
 		//'companyPhone'=>'(8172) 70-00-00',
 		//'image_not_found_address'=>'img/img_not_found.jpg',

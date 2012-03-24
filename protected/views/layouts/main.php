@@ -41,6 +41,7 @@
 							'label'=>$userName,
 							'url'=>'#',
 							'items'=>array(
+								array('url'=>array('/sauna/admin'), 'label'=>'Администрирование саун','visible'=>UserModule::isAdmin()),
 								array('url'=>array('/user'), 'label'=>'Список пользователей','visible'=>UserModule::isAdmin()),
 								array('label'=>'Права', 'url'=>array('/rights'),'visible'=>UserModule::isAdmin()),
 								array('url'=>array('/user/profile/profile'), 'label'=>'Смотреть профиль'),

@@ -33,8 +33,17 @@ class SaunaController extends Controller
 		{
 			$model->attributes=$_POST['Sauna'];
 			$model->user_id = Yii::app()->user->id;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->sauna_id));
+			if ($model->validate()) {
+				if (CUploadedFile::getInstance($model,'image')) {
+					$uniqueName = uniqid().'.jpg';
+					$model->image = CUploadedFile::getInstance($model,'image');
+					$model->main_image_name = $uniqueName;
+					$model->image->saveAs($model->imagePath);
+				}
+				if($model->save()) {
+					$this->redirect(array('view','id'=>$model->sauna_id));
+				}
+			}
 		}
 
 		$this->render('create',array(
@@ -56,16 +65,27 @@ class SaunaController extends Controller
 
 		if(isset($_POST['Sauna']))
 		{
+			$oldImageName = $model->main_image_name;
 			$model->attributes=$_POST['Sauna'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->sauna_id));
+			if ($model->validate()) {
+				if (CUploadedFile::getInstance($model,'image')) {
+					$uniqueName = uniqid().'.jpg';
+					$model->image = CUploadedFile::getInstance($model,'image');
+					$model->main_image_name = $uniqueName;
+					$model->image->saveAs($model->imagePath);
+					unlink(Yii::app()->params['imgPath'].$oldImageName);
+				}
+				if($model->save()) {
+					$this->redirect(array('view','id'=>$model->sauna_id));
+				}
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
-
+	
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
